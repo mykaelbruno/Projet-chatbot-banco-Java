@@ -33,19 +33,19 @@ public class CaixaChatBot {
                             contaLocalizada.depositar(valorOperacao);
                             System.out.println("Depósito de R$: " + valorOperacao + " relizado com sucesso!");
                             System.out.println("saldo atual R$: " + contaLocalizada.getSaldo());
-                            System.out.println("=======================================");
+                            separador();
                             break;
                         case 2:
                             System.out.println("Valor à se sacar: ");
                             valorOperacao = sc.nextDouble();
                             if (valorOperacao > contaLocalizada.getSaldo()) {
                                 System.out.println("Saldo insuficiente.");
-                                System.out.println("=======================================");
+                                separador();
                             } else {
                                 contaLocalizada.sacar(valorOperacao);
                                 System.out.println("Sauque de R$: " + valorOperacao + " relizado com sucesso!");
                                 System.out.println("saldo atual R$: " + contaLocalizada.getSaldo());
-                                System.out.println("=======================================");
+                                separador();
                             }
                             break;
                         case 3:
@@ -58,9 +58,9 @@ public class CaixaChatBot {
 
                             break;
                         case 4:
-                            System.out.println("=======================================");
+                            separador();
                             System.out.println("O saldo da conta informada é de R$: " + contaLocalizada.getSaldo());
-                            System.out.println("=======================================");
+                            separador();
                             break;
                         case 5:
                             System.out.println("Saindo da conta...");
@@ -77,15 +77,19 @@ public class CaixaChatBot {
         }
     }
 
+    private static void separador() {
+        System.out.println("=======================================");
+    }
+
     private static Conta localizarContaTransferencia() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Informe o número da conta de destino para efetuar a transferência:\n>  ");
         long conta = sc.nextLong();
         Conta contaLocalizada = Agencia.localizarConta(conta);
-        System.out.println("=========================================");
+        separador();
         System.out.println("Conta localizada com sucesso!");
         System.out.println(contaLocalizada.getNome());
-        System.out.println("=========================================");
+        separador();
         return contaLocalizada;
     }
 
@@ -94,10 +98,10 @@ public class CaixaChatBot {
         System.out.print("Informe o número da conta a ser localizada:\n>  ");
         long conta = sc.nextLong();
         Conta contaLocalizada = Agencia.localizarConta(conta);
-        System.out.println("=========================================");
+        separador();
         System.out.println("Conta localizada com sucesso!");
         System.out.println(contaLocalizada);
-        System.out.println("=========================================");
+        separador();
         return contaLocalizada;
     }
 
@@ -114,10 +118,10 @@ public class CaixaChatBot {
         Agencia.abrirCaixa();
         Agencia.addConta(conta1);
         Agencia.fecharCaixa();
-        System.out.println("=============================================");
+        separador();
         System.out.println("Conta criada com sucesso!");
         System.out.println(conta1);
-        System.out.println("=============================================");
+        separador();
     }
 
     private static int menuDeOperacoes() {
